@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
+import { BASE_PAGE_TITLE, LOGIN_URL } from "@/lib/constants";
 
 export default function LoggedOut() {
   return (
     <>
       <Head>
-        <title>Logged out | Kreative DocuVet</title>
+        <title>Logged out | {BASE_PAGE_TITLE}</title>
         <meta
           name="description"
           content="First-class authentication for Kreative."
@@ -21,7 +22,7 @@ export default function LoggedOut() {
           <Button
             variant="default"
             onClick={() => {
-              window.location.href = "/dash";
+              window.location.href = LOGIN_URL;
             }}
           >
             Log back in

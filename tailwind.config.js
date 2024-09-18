@@ -37,17 +37,6 @@ module.exports = {
       }
     },
       colors: {
-        "brand-forrest": "#076448",
-        "brand-deepocean": "#086268",
-        "brand-seafoam": "#13CA93",
-        "brand-medicalblue": "#17CAD6",
-        "medicalblue-50": "#e8fafb",
-        "medicalblue-600": "#14B8C2",
-        "medicalblue-700": "#108f97",
-        "seafoam-50": "#E8FAF4",
-        "seafoam-100": "#b6efde",
-        "seafoam-700": "#0e8f68",
-        "seafoam-900": "#08553e",
         "neutrals-1": "#ffffff",
         "neutrals-2": "#FAFAFA",
         "neutrals-3": "#f6f6f6",

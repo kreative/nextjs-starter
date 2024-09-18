@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 import { ArrowRight, ArrowClockwise } from "@phosphor-icons/react/dist/ssr";
 import useLogout from "@/hooks/useLogout";
+import { BASE_ROLE, SETTINGS_URL } from "@/lib/constants";
 
 export default function UnauthorizedPage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function UnauthorizedPage() {
   }
 
   return (
-    <Authenticate permissions={["DOCUVET_BASE"]}>
+    <Authenticate permissions={[BASE_ROLE]}>
       <Navbar activeLink="docustreams" gradientType="regular" />
       <Container className="pt-24">
         <div className="border-neutrals-4 rounded-xl border bg-white p-12">
@@ -30,13 +31,7 @@ export default function UnauthorizedPage() {
           <p className="text-md text-neutrals-10 pt-6">
             You are logged in as {account?.email} and you do not have the
             required permissions to view that page. If you feel that something
-            is wrong or that you should have access, please contact your
-            administrator. If you are an administrator, please contact us using
-            Intercom in the bottom right corner. <br />
-            <br />
-            <span className="font-medium">
-              You can also resume/renew your subscription in the settings page:
-            </span>
+            is wrong or that you should have access, please contact Kreative Support
           </p>
           <div className="flex items-center space-x-3">
             <Button
@@ -56,7 +51,7 @@ export default function UnauthorizedPage() {
             >
               Logout
             </Button>
-            <Link href="/dash/settings?tab=billing">
+            <Link href={SETTINGS_URL}>
               <Button
                 variant={"secondary"}
                 className="mt-6 flex items-center"

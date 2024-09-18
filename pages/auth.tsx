@@ -1,3 +1,4 @@
+import { BASE_PAGE_TITLE } from "@/lib/constants";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -13,24 +14,23 @@ export default function AuthPage() {
   const [cookies, setCookie] = useCookies(["kreative_id_key"]); // skipcq
 
   useEffect(() => {
-    const fetchUser = async () => {
-      let requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/veterinarians/me`;
+    // const fetchUser = async () => {
+    //   let requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/veterinarians/me`;
 
-      const response = await fetch(requestUrl, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Kreative-Id-Key": cookies.kreative_id_key,
-        },
-      });
+    //   const response = await fetch(requestUrl, {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //       "Kreative-Id-Key": cookies.kreative_id_key,
+    //     },
+    //   });
 
-      return response.json();
-    };
-    // nothing happens unless the key query param loads
+    //   return response.json();
+    // };
+
     if (!key) return;
-    // takes the given key and creates a new cookie, then redirects user to admin page
-    // adds the cookie for the client side
+
     setCookie("kreative_id_key", key, {
       secure: process.env.NEXT_PUBLIC_ENV === "development" ? false : true,
       sameSite: "strict",
@@ -38,26 +38,26 @@ export default function AuthPage() {
     });
 
     if (cookies.kreative_id_key) {
-      fetchUser().then((data) => {
-        // if the user has not been added to a clinic in the users table
-        // we then know they need to onboard
-        if (data.veterinarian === null) {
-          if (inviteCode) router.push(`/onboarding?inviteCode=${inviteCode}`);
-          else router.push("/onboarding");
-        } else if (!data.is_subscriber) {
-          router.push("/dash/settings");
-        } else {
-          router.push("/dash/docustreams");
-        }
-      });
+      // fetchUser().then((data) => {
+      //   // if the user has not been added to a clinic in the users table
+      //   // we then know they need to onboard
+      //   if (data.veterinarian === null) {
+      //     if (inviteCode) router.push(`/onboarding?inviteCode=${inviteCode}`);
+      //     else router.push("/onboarding");
+      //   } else if (!data.is_subscriber) {
+      //     router.push("/dash/settings");
+      //   } else {
+      //     router.push("/dash/docustreams");
+      //   }
+      // });
+      router.push("/")
     }
-    // redirects to the admin page for authentication flow to continue
   }, [key, setCookie, cookies, router, inviteCode]);
 
   return (
     <>
       <Head>
-        <title>Authenticating | Kreative DocuVet</title>
+        <title>Authenticating | {BASE_PAGE_TITLE}</title>
         <meta
           name="description"
           content="First-class authentication for Kreative."

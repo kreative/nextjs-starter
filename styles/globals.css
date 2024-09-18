@@ -221,22 +221,4 @@
     @apply bg-neutrals-2 text-neutrals-13;
     padding-right: calc(100vw - 100%);
   }
-  .mention {
-    color: #06a475;
-    background-color: #b6efde;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .dim-mention {
-    color: #9f9f9f;
-    background-color: #e0e0e0;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .display-field:hover {
-    background-color: #b6efde;
-    cursor: pointer;
-  }
 }

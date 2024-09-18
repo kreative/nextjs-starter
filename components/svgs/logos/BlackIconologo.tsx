@@ -1,6 +1,6 @@
 import ISVGProps from "@/types/ISVGProps";
 
-export function DocuVetBlackIconologo({
+export function BlackIconologo({
   className,
 }: ISVGProps): JSX.Element {
   return (

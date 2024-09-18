@@ -6,6 +6,7 @@ import OffboardingSurvey from "@/components/offboarding/Survey";
 import ConfirmCancellation from "@/components/offboarding/Confirm";
 import Complete from "@/components/offboarding/Complete";
 import Container from "@/components/Container";
+import { BASE_ROLE } from "@/lib/constants";
 
 export default function OffboardingIndex(): JSX.Element {
   const [step, setStep] = useState(1);
@@ -30,7 +31,7 @@ export default function OffboardingIndex(): JSX.Element {
 
   return (
     <div className="background-gradient-2">
-      <Authenticate permissions={["DOCUVET_BASE"]}>
+      <Authenticate permissions={[BASE_ROLE]}>
         <Navbar logoColor="black" />
         <div className="hidden sm:grid mx-auto my-24 max-w-6xl grid-cols-4">
           <div className="col-span-1 pt-6">

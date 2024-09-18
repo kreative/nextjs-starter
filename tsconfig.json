@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Authenticate.jsx", "components/ui/tabs3tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Authenticate.tsx", "components/ui/tabs3tsx"],
   "exclude": ["node_modules"]
 }

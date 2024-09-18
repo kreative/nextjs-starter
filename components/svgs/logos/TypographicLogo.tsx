@@ -1,6 +1,6 @@
 import ISVGProps from "@/types/ISVGProps";
 
-export function DocuVetTypograhicLogo({
+export function TypographicLogo({
   className,
   color,
 }: ISVGProps): JSX.Element {
