@@ -11,6 +11,8 @@
 7. Update the Navbar component to match your project's layout.
 8. Change the `TypographicLogo.tsx` file to match your project's branding.
 9. Change the `BlackIconologo.tsx` file to match your project's branding.
+10. Build your onboarding process in the `onboarding.tsx` file.
+11. Build your offboarding process in the `offboarding.tsx` file.
 
 2. Run `npm install` to install the dependencies.
 3. Run `npm run dev` to start the development server.

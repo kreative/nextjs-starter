@@ -10,7 +10,8 @@ import {
 } from "@/components/ui/popover";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import useLogout from "@/hooks/useLogout";
-import { DocuVetTypograhicLogo } from "@/components/svgs/logos/kdv-typographic";
+import { TypographicLogo } from "@/components/svgs/logos/TypographicLogo";
+import { APP_SUPPORT_URL, HOMEPAGE_URL } from "@/lib/constants";
 
 
 export default function Navbar({ logoColor }: { logoColor?: string }): JSX.Element {
@@ -18,10 +19,7 @@ export default function Navbar({ logoColor }: { logoColor?: string }): JSX.Eleme
   const { performLogout } = useLogout();
 
   const handleLogout = (e: any) => {
-    // prevents default button click behavior
     if (e) e.preventDefault();
-
-    // closes the keychain using id-api
     performLogout();
   };
 
@@ -30,7 +28,7 @@ export default function Navbar({ logoColor }: { logoColor?: string }): JSX.Eleme
       <div className="sticky backdrop-blur-lg z-10 animated">
         <nav className="flex justify-between items-center p-4 z-[200] relative w-[100%]">
           <div className="flex items-center">
-            <DocuVetTypograhicLogo className="w-40 h-auto" color={logoColor ? logoColor : "white"} />
+            <TypographicLogo className="w-40 h-auto" color={logoColor ? logoColor : "white"} />
           </div>
           <div className="nav-width">
             <div></div>
@@ -72,7 +70,7 @@ export default function Navbar({ logoColor }: { logoColor?: string }): JSX.Eleme
                     <div className="pt-2 flex flex-col space-y-2">
                       <p className="text-xs text-neutrals-8">Resources</p>
                       <Link
-                        href="https://support.kreativeusa.com/docuvet"
+                        href={APP_SUPPORT_URL}
                         target="_blank"
                         rel="noreferrer"
                         className="text-sm font-medium hover:underline flex items-end"
@@ -84,26 +82,13 @@ export default function Navbar({ logoColor }: { logoColor?: string }): JSX.Eleme
                           className="ml-1"
                         />
                       </Link>
-                      {/* <Link
-                        href="#"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-sm font-medium hover:underline flex items-end"
-                      >
-                        Guides
-                        <ArrowUpRight
-                          size={17}
-                          weight="bold"
-                          className="ml-1"
-                        />
-                      </Link> */}
                       <Link
-                        href="https://kreativedocuvet.com"
+                        href={HOMEPAGE_URL}
                         target="_blank"
                         rel="noreferrer"
                         className="text-sm font-medium hover:underline flex items-end"
                       >
-                        DocuVet homepage
+                        Homepage
                         <ArrowUpRight
                           size={17}
                           weight="bold"

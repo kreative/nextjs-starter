@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Authenticate from "@/components/Authenticate";
 import VerticalSteps from "@/components/offboarding/VerticalSteps";
-import Navbar from "@/components/onboarding/Navbar";
+import Navbar from "@/components/NavbarSimple";
 import OffboardingSurvey from "@/components/offboarding/Survey";
 import ConfirmCancellation from "@/components/offboarding/Confirm";
 import Complete from "@/components/offboarding/Complete";
