@@ -44,7 +44,7 @@ export default function ConfirmCancellation(props: ConfirmCancellationProps) {
   //       Confirm your cancellation
   //     </h1>
   //     <p className="text-md text-neutrals-7 pb-6 pt-3 font-medium tracking-tight">
-  //       <span className="text-brand-forrest font-bold">
+  //       <span className="text-brand-primary font-bold">
   //         Please confirm the details to below before cancelling.
   //       </span>{" "}
   //       If you have any questions or second thoughts, please reach out to us

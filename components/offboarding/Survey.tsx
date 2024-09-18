@@ -51,7 +51,7 @@ export default function OffboardingSurvey(props: OffboardingSurveyProps) {
   //       {account?.firstName}, we&apos;re sorry to see you and your clinic go.
   //     </h1>
   //     <p className="text-md text-neutrals-7 pb-6 pt-3 font-medium tracking-tight">
-  //       <span className="text-brand-forrest font-bold">
+  //       <span className="text-brand-primary font-bold">
   //         Your feedback is the only way we can improve this product
   //       </span>{" "}
   //       for veterinarians across the globe. We would be grateful if you could

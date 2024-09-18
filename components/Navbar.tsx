@@ -35,6 +35,7 @@ import {
   APP_SUPPORT_URL,
   HOMEPAGE_URL,
   PROFILE_URL,
+  SETTINGS_URL,
 } from "@/lib/constants";
 
 interface NavbarProps {
@@ -108,68 +109,40 @@ export default function Navbar(props: NavbarProps): JSX.Element {
           <div className="nav-width">
             <div>
               <div className="flex items-baseline justify-start space-x-4">
-                <motion.div
-                  whileHover={{
-                    scale: 0.97,
-                    transition: { duration: 0.1 },
-                  }}
-                  whileTap={{ scale: 0.92 }}
+                <Link
+                  href={APP_INDEX}
+                  className={
+                    "flex items-center space-x-1 " +
+                    (props.activeLink === "index" ? "" : "opacity-[50%]")
+                  }
                 >
-                  <Link
-                    href="/dash/docustreams"
-                    className={
-                      "flex items-center space-x-1 " +
-                      (props.activeLink === "docustreams"
-                        ? ""
-                        : "opacity-[50%]")
-                    }
-                  >
-                    <Microphone weight="bold" className="h-auto w-6 sm:w-5" />
-                    <p className="hidden text-sm font-medium sm:block">
-                      Docustreams
-                    </p>
-                  </Link>
-                </motion.div>
-                <motion.div
-                  whileHover={{
-                    scale: 0.97,
-                    transition: { duration: 0.1 },
-                  }}
-                  whileTap={{ scale: 0.92 }}
+                  <Microphone weight="bold" className="h-auto w-6 sm:w-5" />
+                  <p className="hidden text-sm font-medium sm:block">
+                    Docustreams
+                  </p>
+                </Link>
+                <Link
+                  href="/dash/archive"
+                  className={
+                    "flex items-center space-x-1 " +
+                    (props.activeLink === "archive" ? "" : "opacity-[50%]")
+                  }
                 >
-                  <Link
-                    href="/dash/archive"
-                    className={
-                      "flex items-center space-x-1 " +
-                      (props.activeLink === "archive" ? "" : "opacity-[50%]")
-                    }
-                  >
-                    <Archive weight="bold" className="h-auto w-6 sm:w-5" />
-                    <p className="hidden text-sm font-medium sm:block">
-                      Archive
-                    </p>
-                  </Link>
-                </motion.div>
-                <motion.div
-                  whileHover={{
-                    scale: 0.97,
-                    transition: { duration: 0.1 },
-                  }}
-                  whileTap={{ scale: 0.92 }}
+                  <Archive weight="bold" className="h-auto w-6 sm:w-5" />
+                  <p className="hidden text-sm font-medium sm:block">Archive</p>
+                </Link>
+                <Link
+                  href={SETTINGS_URL}
+                  className={
+                    "flex items-center space-x-1 " +
+                    (props.activeLink === "settings" ? "" : "opacity-[50%]")
+                  }
                 >
-                  <Link
-                    href="/dash/settings"
-                    className={
-                      "flex items-center space-x-1 " +
-                      (props.activeLink === "settings" ? "" : "opacity-[50%]")
-                    }
-                  >
-                    <GearSix weight="bold" className="h-auto w-6 sm:w-5" />
-                    <p className="hidden text-sm font-medium sm:block">
-                      Settings
-                    </p>
-                  </Link>
-                </motion.div>
+                  <GearSix weight="bold" className="h-auto w-6 sm:w-5" />
+                  <p className="hidden text-sm font-medium sm:block">
+                    Settings
+                  </p>
+                </Link>
               </div>
             </div>
             <TooltipProvider>
@@ -177,7 +150,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                 <Button
                   size={"sm"}
                   variant="default"
-                  className="text-xs h-6 rounded-full flex items-center justify-center bg-brand-deepocean hover:bg-medicalblue-700"
+                  className="text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
                   animated
                 >
                   <Microphone

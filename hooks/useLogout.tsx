@@ -3,7 +3,6 @@ import axios from "axios";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import IAccount from "@/types/IAccount";
-import { shutdown } from "@/lib/intercom";
 import { LOGOUT_CONFIRMATION_PAGE, AIDN } from "@/lib/constants";
 
 function useLogout() {
@@ -37,9 +36,6 @@ function useLogout() {
 
           // resets the global account data store
           setAccount({} as IAccount);
-
-          // shuts down the intercom session and clears the cookie
-          shutdown();
 
           // redirects the user to the logout confirmation page
           window.location.href = LOGOUT_CONFIRMATION_PAGE;

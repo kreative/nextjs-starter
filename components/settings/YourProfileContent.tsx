@@ -80,7 +80,7 @@ export default function YourProfileContent() {
             {isPending ? <ChangeTitleSkeleton /> : null}
             {isSuccess ? (
               <div>
-                <p className="text-brand-forrest">Job Title / Position</p>
+                <p className="text-brand-primary">Job Title / Position</p>
                 <Select
                   onValueChange={(value) => {
                     setProfile((prev) => ({
@@ -132,7 +132,7 @@ export default function YourProfileContent() {
             {isPending ? <ChangeTitleSkeleton /> : null}
             {isSuccess ? (
               <div>
-                <p className="text-brand-forrest">Species that you help</p>
+                <p className="text-brand-primary">Species that you help</p>
                 <Select
                   onValueChange={(value) => {
                     setProfile((prev) => ({
@@ -163,7 +163,6 @@ export default function YourProfileContent() {
           </div>
         </div>
       </div> */}
-      <SectionDivider />
       <div className="grid grid-cols-2">
         <div className="col-span-2 md:col-span-1">
           <h2 className="text-2xl font-bold tracking-tight pb-2">

@@ -37,6 +37,8 @@ module.exports = {
       }
     },
       colors: {
+        "brand-primary": "#076448",
+        "brand-secondary": "#086268",
         "neutrals-1": "#ffffff",
         "neutrals-2": "#FAFAFA",
         "neutrals-3": "#f6f6f6",

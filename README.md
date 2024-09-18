@@ -14,6 +14,8 @@
 10. Build your onboarding process in the `onboarding.tsx` file.
 11. Build your offboarding process in the `offboarding.tsx` file.
 12. Update `YourProfileContent.tsx` to match your project's user profile settings.
+13. Setup all environment secrets in Doppler
+14. Update the `brand-primary` and `brand-secondary` colors in `tailwind.config.js` to match your project's branding.
 
 2. Run `npm install` to install the dependencies.
 3. Run `npm run dev` to start the development server.

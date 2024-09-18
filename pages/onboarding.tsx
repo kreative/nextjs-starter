@@ -129,7 +129,7 @@
 //           {props.frequency === "annual" && (
 //             <div className="flex space-x-2 items-center">
 //               <p className="text-neutrals-7 font-medium">per month</p>
-//               <span className="bg-brand-forrest px-2.5 py-0.5 text-white rounded-full text-[10px] sm:text-[12px] font-medium italic">
+//               <span className="bg-brand-primary px-2.5 py-0.5 text-white rounded-full text-[10px] sm:text-[12px] font-medium italic">
 //                 Save 10%
 //               </span>
 //             </div>
@@ -193,7 +193,7 @@
 //               href="https://kreativedocuvet.com/privacy-policy"
 //               target="_blank"
 //               rel="noopener noreferrer"
-//               className="text-brand-deepocean font-medium hover:underline"
+//               className="text-brand-secondary font-medium hover:underline"
 //             >
 //               Privacy Policy
 //             </Link>{" "}
@@ -202,7 +202,7 @@
 //               href="https://kreativedocuvet.com/terms-of-use"
 //               target="_blank"
 //               rel="noopener noreferrer"
-//               className="text-brand-deepocean font-medium hover:underline"
+//               className="text-brand-secondary font-medium hover:underline"
 //             >
 //               Terms of Use
 //             </Link>
@@ -924,7 +924,7 @@
 //                       or on our{" "}
 //                       <a
 //                         href="https://kreativedocuvet.com"
-//                         className="underline text-brand-forrest hover:text-seafoam-700"
+//                         className="underline text-brand-primary hover:text-seafoam-700"
 //                       >
 //                         website here.
 //                       </a>
