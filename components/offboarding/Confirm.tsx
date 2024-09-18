@@ -2,10 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
-import { getSubscription, cancelSubscription } from "@/lib/stripe";
 import { useCookies } from "react-cookie";
-import SubscriptionCard from "@/components/settings/SubscriptionCard";
-import { SubscriptionCardSkeleton } from "@/components/settings/SettingsSkeleton";
 import { motion } from "framer-motion";
 
 interface ConfirmCancellationProps {
