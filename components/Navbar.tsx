@@ -16,7 +16,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
-  Archive,
   Microphone,
   GearSix,
   ArrowUpRight,
@@ -112,30 +111,22 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                 <Link
                   href={APP_INDEX}
                   className={
-                    "flex items-center space-x-1 " +
-                    (props.activeLink === "index" ? "" : "opacity-[50%]")
+                    "flex items-center space-x-1" +
+                    (props.activeLink === "index"
+                      ? ""
+                      : "transition-opacity duration-300 opacity-[50%] hover:opacity-[75%]")
                   }
                 >
                   <Microphone weight="bold" className="h-auto w-6 sm:w-5" />
-                  <p className="hidden text-sm font-medium sm:block">
-                    Docustreams
-                  </p>
-                </Link>
-                <Link
-                  href="/dash/archive"
-                  className={
-                    "flex items-center space-x-1 " +
-                    (props.activeLink === "archive" ? "" : "opacity-[50%]")
-                  }
-                >
-                  <Archive weight="bold" className="h-auto w-6 sm:w-5" />
-                  <p className="hidden text-sm font-medium sm:block">Archive</p>
+                  <p className="hidden text-sm font-medium sm:block">Home</p>
                 </Link>
                 <Link
                   href={SETTINGS_URL}
                   className={
                     "flex items-center space-x-1 " +
-                    (props.activeLink === "settings" ? "" : "opacity-[50%]")
+                    (props.activeLink === "settings"
+                      ? ""
+                      : "transition-opacity duration-300 opacity-[50%] hover:opacity-[75%]")
                   }
                 >
                   <GearSix weight="bold" className="h-auto w-6 sm:w-5" />
@@ -150,7 +141,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                 <Button
                   size={"sm"}
                   variant="default"
-                  className="text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
+                  className="transition-colors text-xs h-6 rounded-full flex items-center justify-center bg-neutrals-13 hover:bg-neutrals-11"
                   animated
                 >
                   <Microphone

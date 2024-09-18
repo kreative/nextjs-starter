@@ -1,3 +1,5 @@
+import { Microphone } from "@phosphor-icons/react/dist/ssr";
+
 export const AIDN = process.env.NEXT_PUBLIC_AIDN!;
 export const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY!;
 
@@ -13,5 +15,6 @@ export const LOGIN_URL = APP_INDEX;
 export const SETTINGS_URL = "/settings"
 export const PROFILE_URL = "/settings";
 export const MYKREATIVE_URL = "https://my.kreativeusa.com/account";
+export const MAILTO_URL = "mailto:hello@kreativedocuvet.com";
 
 export const BASE_ROLE = "DOCUVET_BASE";

@@ -16,6 +16,7 @@
 12. Update `YourProfileContent.tsx` to match your project's user profile settings.
 13. Setup all environment secrets in Doppler
 14. Update the `brand-primary` and `brand-secondary` colors in `tailwind.config.js` to match your project's branding.
+15. Update the `Footer.tsx` file to match your project's structure.
 
 2. Run `npm install` to install the dependencies.
 3. Run `npm run dev` to start the development server.

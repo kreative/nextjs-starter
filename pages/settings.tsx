@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tabs2";
 import YourProfileContent from "@/components/settings/YourProfileContent";
 import { BASE_ROLE } from "@/lib/constants";
+import Footer from "@/components/Footer";
 
 export default function Settings() {
   const [tab, setTab] = useState("profile");
@@ -44,6 +45,7 @@ export default function Settings() {
           </TabsContent>
         </Container>
       </Tabs>
+      <Footer />
     </Authenticate>
   );
 }

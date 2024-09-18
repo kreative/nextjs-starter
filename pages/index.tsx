@@ -1,6 +1,7 @@
 import Authenticate from "@/components/Authenticate";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
+import Footer from "@/components/Footer";
 import { BASE_ROLE } from "@/lib/constants";
 
 export default function Settings() {
@@ -12,6 +13,7 @@ export default function Settings() {
           Welcome to Kreative Next.js Starter
         </h1>
       </Container>
+      <Footer />
     </Authenticate>
   );
 }
