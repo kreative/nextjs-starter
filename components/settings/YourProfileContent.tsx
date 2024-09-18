@@ -14,10 +14,11 @@ import Container from "@/components/Container";
 import { ChangeTitleSkeleton } from "@/components/settings/SettingsSkeleton";
 import SectionDivider from "@/components/SectionDivider";
 import { ArrowLineUpRight } from "@phosphor-icons/react/dist/ssr";
-import { getUser, updateUser } from "@/lib/users";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import { useCookies } from "react-cookie";
+import { MYKREATIVE_URL } from "@/lib/constants";
+import { getCurrentUser } from "@/lib/users";
 
 interface YourProfileContentProps {
   userTitle: string;
@@ -38,50 +39,41 @@ export default function YourProfileContent() {
   const { isPending, isSuccess, data } = useQuery({
     queryKey: ["user", account.ksn],
     queryFn: async () => {
-      return await getUser({
-        ksn: account.ksn,
+      return await getCurrentUser({
         key: cookies.kreative_id_key,
       });
     },
   });
 
-  const { mutate } = useMutation({
-    mutationFn: async () => {
-      return await updateUser({
-        ksn: account.ksn,
-        key: cookies.kreative_id_key,
-        data: {
-          title: profile.userTitle,
-          species_served: profile.speciesServed,
-        },
-      });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["user", account.ksn],
-      });
+  // const { mutate } = useMutation({
+  //   mutationFn: async () => {
+  //     return await updateUser({
+  //       ksn: account.ksn,
+  //       key: cookies.kreative_id_key,
+  //       data: profile, // TODO update this
+  //     });
+  //   },
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["user", account.ksn],
+  //     });
 
-      toast({
-        title: "Woohoo 🎉",
-        description: "Your profile title has been updated.",
-      });
-    },
-  });
+  //     toast({
+  //       title: "Woohoo 🎉",
+  //       description: "Your profile has been updated.",
+  //     });
+  //   },
+  // });
 
   useEffect(() => {
     if (isPending) return;
 
-    console.log(data)
-
-    setProfile({
-      speciesServed: data?.veterinarian.species_served,
-      userTitle: data?.veterinarian.title,
-    });
+    setProfile(data); // TODO: update this
   }, [isPending, data]);
 
   return (
     <Container>
-      <div className="">
+      {/* <div className="">
         <h2 className="text-2xl font-bold tracking-tight pb-3">Your profile</h2>
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2 sm:col-span-1">
@@ -170,7 +162,7 @@ export default function YourProfileContent() {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
       <SectionDivider />
       <div className="grid grid-cols-2">
         <div className="col-span-2 md:col-span-1">
@@ -186,7 +178,7 @@ export default function YourProfileContent() {
               className="flex items-center space-x-2"
               onClick={(e: any) => {
                 e.preventDefault();
-                router.push("https://my.kreativeusa.com/account");
+                router.push(MYKREATIVE_URL);
               }}
               animated
             >
