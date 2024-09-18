@@ -1,0 +1,37 @@
+<svg width="1440" height="898" viewBox="0 0 1440 898" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1165_1158)">
+<rect width="1440" height="898" fill="#F6F6F6"/>
+<g opacity="0.5" clip-path="url(#clip1_1165_1158)">
+<rect width="1440" height="900" transform="translate(0 -1)" fill="white"/>
+<g filter="url(#filter0_f_1165_1158)">
+<path d="M-430 877C859.308 877 1470.5 484.798 1470.5 -46.5C1470.5 -577.798 291.735 -503.85 -140 -46.5C-399.487 228.382 -1719.31 877 -430 877Z" fill="url(#paint0_radial_1165_1158)"/>
+</g>
+<g filter="url(#filter1_f_1165_1158)">
+<ellipse cx="372.124" cy="478.32" rx="311.19" ry="91.4884" transform="rotate(-7.11344 372.124 478.32)" fill="#16B3BD"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_1165_1158" x="-1486.46" y="-917.76" width="3456.96" height="2294.76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_1165_1158"/>
+</filter>
+<filter id="filter1_f_1165_1158" x="-236.883" y="79.6702" width="1218.01" height="797.3" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_1165_1158"/>
+</filter>
+<radialGradient id="paint0_radial_1165_1158" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(242.017 -131) rotate(90) scale(1008 1912.8)">
+<stop offset="0.273884" stop-color="#D0FCFF"/>
+<stop offset="0.508333" stop-color="#1CE3F0"/>
+<stop offset="0.878125" stop-color="#1ABCEC"/>
+</radialGradient>
+<clipPath id="clip0_1165_1158">
+<rect width="1440" height="898" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1165_1158">
+<rect width="1440" height="900" fill="white" transform="translate(0 -1)"/>
+</clipPath>
+</defs>
+</svg>
