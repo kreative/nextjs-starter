@@ -5,13 +5,11 @@ import Dropzone, {
   type DropzoneProps,
   type FileRejection,
 } from "react-dropzone";
-import { toast } from "sonner";
 import { cn, formatBytes } from "@/lib/utils";
 import { useControllableState } from "@/hooks/use-controllable-state";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { DSAudioFile } from "@/components/svgs/ds-audiofile";
 import { useToast } from "@/components/ui/use-toast";
 
 interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -287,14 +285,14 @@ function FileCard({ file, progress, onRemove }: FileCardProps) {
   return (
     <div className="relative flex items-center space-x-4">
       <div className="flex flex-1 items-center">
-        <DSAudioFile className="w-12 h-12 hidden sm:block" />
+        {/* <DSAudioFile className="w-12 h-12 hidden sm:block" />
         <Image
           src={"/ds-audiofile.webp"}
           alt="audio file"
           width={30}
           height={42}
           className="w-14 h-14 drop-shadow-md block sm:hidden"
-        />
+        /> */}
         <div className="flex w-full flex-col ml-3">
           <div className="space-y-px">
             <p className="line-clamp-1 text-md text-foreground/80 font-bold">

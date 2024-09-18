@@ -18,7 +18,6 @@ import { getUser, updateUser } from "@/lib/users";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import { useCookies } from "react-cookie";
-import AutoDeleteForm from "@/components/settings/profile/AutoDeleteForm";
 
 interface YourProfileContentProps {
   userTitle: string;
@@ -278,26 +277,6 @@ export default function YourProfileContent() {
               </clipPath>
             </defs>
           </svg>
-        </div>
-      </div>
-      <SectionDivider />
-      <div>
-        <h2 className="text-2xl font-bold tracking-tight pb-2">
-          Auto-delete your Docustream audio files
-        </h2>
-        <p className="text-md text-neutrals-10 mb-6">
-          You can enable auto-deletion of your Docustream audio files after they
-          have been processed. This will help you ensure that your audio files
-          are removed from our servers without having to manually delete them.
-        </p>
-        <div className="w-full sm:w-1/2">
-          {isPending && <ChangeTitleSkeleton />}
-          {isSuccess && data && (
-            <AutoDeleteForm
-              ksn={account.ksn}
-              currentTtl={data?.veterinarian.audio_file_ttl || 18250}
-            />
-          )}
         </div>
       </div>
     </Container>

@@ -36,10 +36,6 @@ module.exports = {
         }
       }
     },
-      backgroundImage: {
-        "green-gradient": "url('/green-gradient.svg')",
-        "blue-gradient": "url('/blue-gradient.svg')",
-      },
       colors: {
         "brand-forrest": "#076448",
         "brand-deepocean": "#086268",

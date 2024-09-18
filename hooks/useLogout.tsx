@@ -4,8 +4,7 @@ import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import IAccount from "@/types/IAccount";
 import { shutdown } from "@/lib/intercom";
-
-const AIDN = process.env.NEXT_PUBLIC_AIDN;
+import { LOGOUT_CONFIRMATION_PAGE, AIDN } from "@/lib/constants";
 
 function useLogout() {
   const [account, setAccount] = useAtom(accountStore);
@@ -43,7 +42,7 @@ function useLogout() {
           shutdown();
 
           // redirects the user to the logout confirmation page
-          window.location.href = "https://kreativedocuvet.com";
+          window.location.href = LOGOUT_CONFIRMATION_PAGE;
         }
       })
       .catch((error) => {

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
 import router from "next/router";
+import { APP_SUPPORT_URL } from "@/lib/constants";
 
 export default function Error(): JSX.Element {
   return (
@@ -47,7 +48,7 @@ export default function Error(): JSX.Element {
       <Button
         variant="outline"
         onClick={() => {
-          router.push("https://support.kreativeusa.com/docuvet");
+          router.push(APP_SUPPORT_URL);
         }}
       >
         Contact support

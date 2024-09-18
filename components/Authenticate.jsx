@@ -5,6 +5,7 @@ import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import { userRolesStore } from "@/stores/userRoles";
 import { intercomStore } from "@/stores/intercom";
+import { UNAUTHORIZED_PAGE } from "../lib/constants";
 
 // the identifier for kreative id, either test or prod version
 const AIDN = process.env.NEXT_PUBLIC_AIDN;
@@ -135,7 +136,7 @@ export default function Authenticate({ children, permissions }) {
               // user does not have the correct permissions to continue
               // we can't just say the user isn't authenticated, because they are, they just don't have the correct permissions
               // FOR NOW we will handle the error by redirecting the user to the error page with a query param for the error
-              window.location.href = `/dash/unauthorized`;
+              window.location.href = UNAUTHORIZED_PAGE;
             } else {
               // since we can't add headers, since we are executing this on the client side, we will just setup new cookies
               setCookie("keychain_id", keychain.id, {
