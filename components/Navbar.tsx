@@ -23,7 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import useLogout from "@/hooks/useLogout";
 import { TypographicLogo } from "@/components/svgs/logos/TypographicLogo";
-import { BlackIconologo } from "@/components/svgs/logos/BlackIconologo";
+import { Iconologo } from "@/components/svgs/logos/Iconologo";
 import { useQuery } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 import { motion } from "framer-motion";
@@ -93,16 +93,16 @@ export default function Navbar(props: NavbarProps): JSX.Element {
             <motion.div
               className="flex items-center"
               whileHover={{
-                scale: 1.05,
+                scale: 0.98,
                 transition: { duration: 0.11 },
               }}
-              whileTap={{ scale: 0.92 }}
+              whileTap={{ scale: 0.95 }}
             >
               <TypographicLogo
                 className="hidden h-auto w-32 xl:block"
                 color="black"
               />
-              <BlackIconologo className="mr-8 block h-auto w-4 xl:hidden" />
+              <Iconologo className="mr-8 block h-auto w-4 xl:hidden" />
             </motion.div>
           </Link>
           <div className="nav-width">
