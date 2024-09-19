@@ -1,24 +1,13 @@
 import { useRouter } from "next/router";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import Container from "@/components/Container";
-import { ChangeTitleSkeleton } from "@/components/settings/SettingsSkeleton";
-import SectionDivider from "@/components/SectionDivider";
 import { ArrowLineUpRight } from "@phosphor-icons/react/dist/ssr";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
-import { useCookies } from "react-cookie";
 import { MYKREATIVE_URL } from "@/lib/constants";
-import { getCurrentUser } from "@/lib/users";
 
 interface YourProfileContentProps {
   userTitle: string;
@@ -27,49 +16,13 @@ interface YourProfileContentProps {
 
 export default function YourProfileContent() {
   const router = useRouter();
+  const { toast } = useToast();
   const queryClient = useQueryClient();
   const [account] = useAtom(accountStore);
-  const [cookies] = useCookies(["kreative_id_key"]);
   const [profile, setProfile] = useState<YourProfileContentProps>({
     userTitle: "",
     speciesServed: "Small animal",
   });
-  const { toast } = useToast();
-
-  const { isPending, isSuccess, data } = useQuery({
-    queryKey: ["user", account.ksn],
-    queryFn: async () => {
-      return await getCurrentUser({
-        key: cookies.kreative_id_key,
-      });
-    },
-  });
-
-  // const { mutate } = useMutation({
-  //   mutationFn: async () => {
-  //     return await updateUser({
-  //       ksn: account.ksn,
-  //       key: cookies.kreative_id_key,
-  //       data: profile, // TODO update this
-  //     });
-  //   },
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({
-  //       queryKey: ["user", account.ksn],
-  //     });
-
-  //     toast({
-  //       title: "Woohoo 🎉",
-  //       description: "Your profile has been updated.",
-  //     });
-  //   },
-  // });
-
-  useEffect(() => {
-    if (isPending) return;
-
-    setProfile(data); // TODO: update this
-  }, [isPending, data]);
 
   return (
     <Container>

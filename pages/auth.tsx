@@ -3,6 +3,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { accountStore } from "@/stores/account";
+import { userRolesStore } from "@/stores/userRoles";
+import { userStore } from "@/stores/user";
+import { useAtom } from "jotai";
+import useUsers from "@/hooks/useUsers";
+import ICurrentUser from "@/types/ICurrentUser";
+import { getRolesToSet } from "@/lib/utils";
 
 // this is the callback page that Kreative ID (public authentication part) will go to after a successful auth flow
 // this means that this page is in charge of taking the key=XXX from the query parameters and creating a cookie with it
@@ -12,22 +19,15 @@ export default function AuthPage() {
   const router = useRouter();
   const { key, inviteCode } = router.query;
   const [cookies, setCookie] = useCookies(["kreative_id_key"]); // skipcq
+  const { getCurrentUser } = useUsers();
+  const [, setAccount] = useAtom(accountStore);
+  const [, setUserRoles] = useAtom(userRolesStore);
+  const [, setUser] = useAtom(userStore);
 
   useEffect(() => {
-    // const fetchUser = async () => {
-    //   let requestUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/veterinarians/me`;
-
-    //   const response = await fetch(requestUrl, {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json",
-    //       "Kreative-Id-Key": cookies.kreative_id_key,
-    //     },
-    //   });
-
-    //   return response.json();
-    // };
+    const fetchUser = async () => {
+      return await getCurrentUser();
+    };
 
     if (!key) return;
 
@@ -38,23 +38,25 @@ export default function AuthPage() {
     });
 
     if (cookies.kreative_id_key) {
-      // TODO we need to get the user's Kreative ID Account
-      // TODO and potentially also their "user" object
-      // fetchUser().then((data) => {
-      //   // if the user has not been added to a clinic in the users table
-      //   // we then know they need to onboard
-      //   if (data.veterinarian === null) {
-      //     if (inviteCode) router.push(`/onboarding?inviteCode=${inviteCode}`);
-      //     else router.push("/onboarding");
-      //   } else if (!data.is_subscriber) {
-      //     router.push("/dash/settings");
-      //   } else {
-      //     router.push("/dash/docustreams");
-      //   }
-      // });
+      fetchUser().then((data: ICurrentUser) => {
+        setAccount(data.account);
+        setUserRoles(getRolesToSet(data.account.roles));
+        setUser(data.user);
+        // if the user has not been added to a clinic in the users table
+        // we then know they need to onboard
+        // if (data.veterinarian === null) {
+        //   if (inviteCode) router.push(`/onboarding?inviteCode=${inviteCode}`);
+        //   else router.push("/onboarding");
+        // } else if (!data.is_subscriber) {
+        //   router.push("/dash/settings");
+        // } else {
+        //   router.push("/dash/docustreams");
+        // }
+
+      });
       router.push("/")
     }
-  }, [key, setCookie, cookies, router, inviteCode]);
+  }, [key, setCookie, cookies, router, inviteCode, getCurrentUser, setAccount, setUserRoles, setUser]);
 
   return (
     <>

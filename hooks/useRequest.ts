@@ -6,7 +6,7 @@ function useRequest() {
   const AIDN = process.env.NEXT_PUBLIC_AIDN!;
   const ENV = process.env.NEXT_PUBLIC_ENV!;
   const router = useRouter();
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies, _, removeCookie] = useCookies([
     "kreative_id_key",
     "keychain_id",
   ]);
@@ -74,6 +74,8 @@ function useRequest() {
           case 401:
             // this means that the user does not have a valid key
             errorMessage = "Unauthorized";
+            removeCookie("keychain_id");
+            removeCookie("kreative_id_key");
             router.push(KREATIVE_ID_URL + `&message=${errorData}`);
             break;
           case 403:

@@ -1,8 +1,6 @@
-import Authenticate from "@/components/Authenticate";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
-import { BASE_ROLE } from "@/lib/constants";
 
 export default function Home() {
   return (

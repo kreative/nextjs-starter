@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import { cn, getRolesToSet } from "@/lib/utils";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useAtom } from "jotai";
@@ -27,17 +27,15 @@ import { Iconologo } from "@/components/svgs/logos/Iconologo";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { userStore } from "@/stores/user";
-import { userRolesStore, IUserRolesStore } from "@/stores/userRoles";
-import { getCurrentUser } from "@/lib/users";
+import { userRolesStore } from "@/stores/userRoles";
+import useUsers from "@/hooks/useUsers";
 import {
   APP_INDEX,
   APP_SUPPORT_URL,
-  BASE_ROLE,
   HOMEPAGE_URL,
   PROFILE_URL,
   SETTINGS_URL,
 } from "@/lib/constants";
-import IAccountRole from "@/types/IAccountRole";
 
 interface NavbarProps {
   activeLink: string;
@@ -46,30 +44,19 @@ interface NavbarProps {
 
 export default function Navbar(props: NavbarProps): JSX.Element {
   const [account, setAccount] = useAtom(accountStore);
-  const [user, setUser] = useAtom(userStore);
-  const [userRoles, setUserRoles] = useAtom(userRolesStore);
+  const [, setUser] = useAtom(userStore);
+  const [, setUserRoles] = useAtom(userRolesStore);
   const { performLogout } = useLogout();
+  const { getCurrentUser } = useUsers();
 
   useQuery({
     queryKey: ["currentUser"],
     queryFn: async () => {
       const userData = await getCurrentUser();
-      const roles = userData.account.roles;
 
       setUser(userData.user);
       setAccount(userData.account);
-
-      let rolesToSet: IUserRolesStore = { hasBase: false };
-
-      roles.forEach((role: IAccountRole) => {
-        switch (role.rid) {
-          case BASE_ROLE:
-            rolesToSet.hasBase = true;
-            break;
-        }
-      });
-
-      setUserRoles(rolesToSet);
+      setUserRoles(getRolesToSet(userData.account.roles));
 
       return userData;
     },
@@ -87,7 +74,12 @@ export default function Navbar(props: NavbarProps): JSX.Element {
     else setColorchange(false);
   };
 
-  window.addEventListener("scroll", changeNavbarColor);
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+    return () => {
+      window.removeEventListener("scroll", changeNavbarColor);
+    };
+  }, []);
 
   return (
     <div>
@@ -109,9 +101,9 @@ export default function Navbar(props: NavbarProps): JSX.Element {
               className="flex items-center"
               whileHover={{
                 scale: 0.98,
-                transition: { duration: 0.11 },
+                transition: { duration: 0.25, delay: 0.1 },
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.25 } }}
             >
               <TypographicLogo
                 className="hidden h-auto w-32 xl:block"
@@ -126,7 +118,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                 <Link
                   href={APP_INDEX}
                   className={
-                    "flex items-center space-x-1" +
+                    "flex items-center space-x-1 " +
                     (props.activeLink === "index"
                       ? ""
                       : "transition-opacity duration-300 opacity-[50%] hover:opacity-[75%]")
@@ -207,8 +199,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
                           />
                           <div>
                             <p className="text-neutrals-13 text-sm font-bold">
-                              {account.prefix === "Dr." ? "Dr. " : ""}
-                              {account.firstName + " " + account.lastName}
+                              {account?.firstName + " " + account?.lastName}
                             </p>
                           </div>
                         </div>

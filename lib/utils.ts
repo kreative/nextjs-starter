@@ -1,6 +1,23 @@
+import { IUserRolesStore } from "@/stores/userRoles";
+import IAccountRole from "@/types/IAccountRole";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { BASE_ROLE } from "./constants";
 const countryList = require("country-list");
+
+export function getRolesToSet(roles: IAccountRole[]): IUserRolesStore {
+  let rolesToSet: IUserRolesStore = { hasBase: false };
+
+  roles.forEach((role: IAccountRole) => {
+    switch (role.rid) {
+      case BASE_ROLE:
+        rolesToSet.hasBase = true;
+        break;
+    }
+  });
+
+  return rolesToSet;
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

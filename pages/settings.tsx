@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Authenticate from "@/components/Authenticate";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 import {
@@ -10,7 +9,6 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs2";
 import YourProfileContent from "@/components/settings/YourProfileContent";
-import { BASE_ROLE } from "@/lib/constants";
 import Footer from "@/components/Footer";
 
 export default function Settings() {

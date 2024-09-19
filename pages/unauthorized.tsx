@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import Authenticate from "@/components/Authenticate";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 import { ArrowRight, ArrowClockwise } from "@phosphor-icons/react/dist/ssr";
 import useLogout from "@/hooks/useLogout";
-import { BASE_ROLE, SETTINGS_URL } from "@/lib/constants";
+import { SETTINGS_URL } from "@/lib/constants";
 
 export default function UnauthorizedPage() {
   const router = useRouter();
@@ -21,7 +20,7 @@ export default function UnauthorizedPage() {
   }
 
   return (
-    <Authenticate permissions={[BASE_ROLE]}>
+    <div>
       <Navbar activeLink="docustreams" gradientType="regular" />
       <Container className="pt-24">
         <div className="border-neutrals-4 rounded-xl border bg-white p-12">
@@ -31,7 +30,8 @@ export default function UnauthorizedPage() {
           <p className="text-md text-neutrals-10 pt-6">
             You are logged in as {account?.email} and you do not have the
             required permissions to view that page. If you feel that something
-            is wrong or that you should have access, please contact Kreative Support
+            is wrong or that you should have access, please contact Kreative
+            Support
           </p>
           <div className="flex items-center space-x-3">
             <Button
@@ -64,6 +64,6 @@ export default function UnauthorizedPage() {
           </div>
         </div>
       </Container>
-    </Authenticate>
+    </div>
   );
 }
