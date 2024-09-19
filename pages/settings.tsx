@@ -24,7 +24,7 @@ export default function Settings() {
   }, [router]);
 
   return (
-    <Authenticate permissions={[BASE_ROLE]}>
+    <div>
       <Navbar activeLink="settings" gradientType="regular" />
       <Container>
         <h1 className="pt-24 text-3xl font-bold tracking-tight px-4 min-[840px]:px-0">
@@ -46,6 +46,6 @@ export default function Settings() {
         </Container>
       </Tabs>
       <Footer />
-    </Authenticate>
+    </div>
   );
 }

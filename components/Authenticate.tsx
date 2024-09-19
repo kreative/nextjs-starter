@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useAtom } from "jotai";
 import { accountStore } from "@/stores/account";
 import { IUserRolesStore, userRolesStore } from "@/stores/userRoles";
-import { BASE_ROLE, UNAUTHORIZED_PAGE, AIDN, UNKNOWN_ERROR_REDIRECT_URL } from "@/lib/constants";
+import { BASE_ROLE, UNAUTHORIZED_PAGE, UNKNOWN_ERROR_REDIRECT_URL } from "@/lib/constants";
 import IAccountRole from "@/types/IAccountRole";
 
 // this component will serve as custom "middleware" to authenticate certain pages
@@ -17,6 +17,7 @@ interface AuthenticateProps {
 }
 
 export default function Authenticate({ children, permissions }: AuthenticateProps) {
+  const AIDN = process.env.NEXT_PUBLIC_AIDN!;
   // this sets default state to not authenticate so that the function won't render until useEffect has run
   const [authenticated, setAuthenticated] = useState(false);
   // the single cookie we need for this function, stores the key for the user
@@ -124,12 +125,12 @@ export default function Authenticate({ children, permissions }: AuthenticateProp
               setAccount(account);
 
               // send identify event to segment
-              global?.analytics?.identify(account.ksn, {
-                email: account.email,
-                firstName: account.firstName,
-                lastName: account.lastName,
-                roles: account.roles,
-              });
+              // global?.analytics?.identify(account.ksn, {
+              //   email: account.email,
+              //   firstName: account.firstName,
+              //   lastName: account.lastName,
+              //   roles: account.roles,
+              // });
 
               // once all operations are completed, we set authenticated to true
               setAuthenticated(true);
@@ -139,7 +140,7 @@ export default function Authenticate({ children, permissions }: AuthenticateProp
             // some sort of unknown error, possibly on the client side itself
             removeCookie("kreative_id_key");
             removeCookie("keychain_id");
-            window.location.href = `${UNKNOWN_ERROR_REDIRECT_URL}&message=${error.message}`;
+            window.location.href = `${UNKNOWN_ERROR_REDIRECT_URL}?cause=unknown&aidn=${AIDN}&message=${error.message}`;
           });
       }
     };

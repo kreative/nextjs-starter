@@ -1,3 +1,7 @@
+export default function Onboarding() {
+  return <div>Onboarding</div>;
+}
+
 // import Link from "next/link";
 // import { cn } from "@/lib/utils";
 // import { useRouter } from "next/router";

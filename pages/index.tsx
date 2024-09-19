@@ -4,9 +4,9 @@ import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import { BASE_ROLE } from "@/lib/constants";
 
-export default function Settings() {
+export default function Home() {
   return (
-    <Authenticate permissions={[BASE_ROLE]}>
+    <div>
       <Navbar activeLink="index" gradientType="regular" />
       <Container>
         <h1 className="pt-24 text-3xl font-bold tracking-tight px-4 min-[840px]:px-0">
@@ -14,6 +14,6 @@ export default function Settings() {
         </h1>
       </Container>
       <Footer />
-    </Authenticate>
+    </div>
   );
 }
