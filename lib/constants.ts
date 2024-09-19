@@ -11,3 +11,6 @@ export const SETTINGS_URL = "/settings"
 export const PROFILE_URL = "/settings";
 export const MYKREATIVE_URL = "https://my.kreativeusa.com/account";
 export const MAILTO_URL = "mailto:hello@kreativedocuvet.com";
+export const SIGNIN_URL = "https://id.kreativeusa.com/signin";
+
+export const BASE_ROLE = "DOCUVET_BASE";

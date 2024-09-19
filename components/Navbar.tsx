@@ -25,17 +25,19 @@ import useLogout from "@/hooks/useLogout";
 import { TypographicLogo } from "@/components/svgs/logos/TypographicLogo";
 import { Iconologo } from "@/components/svgs/logos/Iconologo";
 import { useQuery } from "@tanstack/react-query";
-import { useCookies } from "react-cookie";
 import { motion } from "framer-motion";
 import { userStore } from "@/stores/user";
+import { userRolesStore, IUserRolesStore } from "@/stores/userRoles";
 import { getCurrentUser } from "@/lib/users";
 import {
   APP_INDEX,
   APP_SUPPORT_URL,
+  BASE_ROLE,
   HOMEPAGE_URL,
   PROFILE_URL,
   SETTINGS_URL,
 } from "@/lib/constants";
+import IAccountRole from "@/types/IAccountRole";
 
 interface NavbarProps {
   activeLink: string;
@@ -43,19 +45,32 @@ interface NavbarProps {
 }
 
 export default function Navbar(props: NavbarProps): JSX.Element {
-  const [account] = useAtom(accountStore);
+  const [account, setAccount] = useAtom(accountStore);
   const [user, setUser] = useAtom(userStore);
-  const [cookies] = useCookies(["kreative_id_key"]);
+  const [userRoles, setUserRoles] = useAtom(userRolesStore);
   const { performLogout } = useLogout();
 
   useQuery({
     queryKey: ["currentUser"],
     queryFn: async () => {
-      const userData = await getCurrentUser({
-        key: cookies.kreative_id_key,
+      const userData = await getCurrentUser();
+      const roles = userData.account.roles;
+
+      setUser(userData.user);
+      setAccount(userData.account);
+
+      let rolesToSet: IUserRolesStore = { hasBase: false };
+
+      roles.forEach((role: IAccountRole) => {
+        switch (role.rid) {
+          case BASE_ROLE:
+            rolesToSet.hasBase = true;
+            break;
+        }
       });
 
-      setUser(userData);
+      setUserRoles(rolesToSet);
+
       return userData;
     },
   });

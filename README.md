@@ -4,10 +4,10 @@
 
 1. Update all of the constants in `constants.ts` to match your project.
 2. Change the `public/favicon.ico` file to your project's favicon.
-3. Update which roles get set in `Authenticate.tsx` and update the `IUserRoles` interface in `userRoles.ts`
+3. Update the `IUserRoles` interface in `userRoles.ts`
 4. Update how the `auth.tsx` file works to match your authentication method.
 5. Change the gradients in `styles/globals.css` to match your project's branding. Keep it unique!
-6. Update the `getCurrentUser` function in `lib/users.ts` to get fresh user data in the `Navbar.tsx` component.
+6. Update the `getCurrentUser` function in `lib/users.ts` to get fresh user data in the `Navbar.tsx` component. **Ensure that the response body matches the `ICurrentUser` interface (which can be extended)**.
 7. Update the Navbar component to match your project's layout.
 8. Change the `TypographicLogo.tsx` file to match your project's branding.
 9. Change the `BlackIconologo.tsx` file to match your project's branding.

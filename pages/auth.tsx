@@ -38,6 +38,8 @@ export default function AuthPage() {
     });
 
     if (cookies.kreative_id_key) {
+      // TODO we need to get the user's Kreative ID Account
+      // TODO and potentially also their "user" object
       // fetchUser().then((data) => {
       //   // if the user has not been added to a clinic in the users table
       //   // we then know they need to onboard
